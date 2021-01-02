@@ -90,13 +90,11 @@ class UserViewModel(private val repository: UserRepository) : ViewModel(),Observ
 
     fun insert(user : UserEnitiy){
         viewModelScope.launch {
-             val newRowId = repository.insert(user)
-            statusMessage.value = Event("Row Inserted Successfully")
+                statusMessage.value = Event("Subscriber Inserted Successfully")
         }
     }
 
     fun update(user : UserEnitiy) = viewModelScope.launch {
-        val noOfRows = repository.update(user)
             userName.value = null
             userNumber.value = null
             isUpdateOrDelete = false
@@ -106,7 +104,6 @@ class UserViewModel(private val repository: UserRepository) : ViewModel(),Observ
     }
 
     fun delete(user: UserEnitiy) = viewModelScope.launch {
-        val noOfRowsDeleted = repository.delete(user)
             userName.value = null
             userNumber.value = null
             isUpdateOrDelete = false
